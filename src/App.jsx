@@ -1,8 +1,6 @@
 import './App.css'
 import { Route, BrowserRouter, Routes } from 'react-router-dom'
 import Homepage from './pages/Homepage'
-import PokemonList from './component/PokeList.jsx'
-import Navbar from './component/Navbar.jsx'
 
 
 function App() {
