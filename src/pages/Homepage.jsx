@@ -1,12 +1,11 @@
 import React from 'react'
 import PokeList from '../component/PokeList'
+import Navbar from '../component/Navbar'
 
 const Homepage = () => {
   return (
     <div>
-      <h1>Bienvenue sur le Pokédex</h1>
-      <p>Rechercher un pokémon</p>
-
+      <Navbar/>
       <PokeList />
     </div>
   )
