@@ -1,9 +1,18 @@
 import { useState, useEffect } from 'react';
+import {useNavigate} from "react-router-dom";
 
 export default function PokemonList() {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+
+  const handlePokemonClick = (pokemon) =>{
+    localStorage.setItem("pokemonInfo", JSON.stringify(pokemon));
+    navigate("/profile");
+    
+  }
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -85,6 +94,7 @@ export default function PokemonList() {
 
             return (
               <div
+                onClick={() => handlePokemonClick(pokemon)}
                 key={pokemon.id}
                 className={`rounded-2xl shadow-xl p-4 hover:shadow-2xl transition-shadow cursor-pointer ${groupBgColor} shine-effect`} // Ajout de shine-effect
               >
