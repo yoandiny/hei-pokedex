@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+
 const typeStyles = {
   grass: { bg: 'bg-green-300', text: 'text-white', symbol: '🌱', pageBg: 'bg-green-500' },
   poison: { bg: 'bg-purple-300', text: 'text-white', symbol: '☣️', pageBg: 'bg-purple-500' },
@@ -63,65 +64,66 @@ export const PokemonProfile = () => {
   const backgroundClass = typeStyles[pokemonInfo.types[0].type.name]?.pageBg || 'bg-gray-100';
 
   return (
-    <div className="flex">
-      <div className={`w-1/2 flex justify-center h-180 p-6 ${backgroundClass}`}>
+    <div className={`flex ${backgroundClass}`}>
+      <div className="w-1/2 flex pt-20 justify-center h-180">
         <span>
-          <h1 className="text-4xl font-bold">#{pokemonInfo.id} {pokemonInfo.name}</h1>
-          <img className="w-80 h-80 mt-20" src={spriteUrl} alt={pokemonInfo.name} />
+          <h1 className="text-5xl font-bold">#{pokemonInfo.id} {pokemonInfo.name}</h1>
+          <img className="w-80 h-80 mt-18" src={spriteUrl} alt={pokemonInfo.name} />
         </span>
       </div>
-      <div className="pl-10 pt-5 bg-gray-200">
+      <div className="pl-10 pt-5 rounded-l-3xl bg-gray-800">
         <span>
-          <p className="text-lg">{pokemonDesc}</p>
-          <section className="flex gap-5 items-center">
-            <h3 className="text-xl font-semibold mt-4">Type:</h3>
-            <p className={`inline-block mt-2 px-3 py-1 rounded-full ${typeStyles[pokemonInfo.types[0].type.name]?.bg || 'bg-gray-200'} ${typeStyles[pokemonInfo.types[0].type.name]?.text || 'text-black'}`}>
-              {typeStyles[pokemonInfo.types[0].type.name]?.symbol || ''} {pokemonInfo.types[0].type.name}
-            </p>
-            {pokemonInfo.types[1] && (
-              <p className={`inline-block px-3 py-1 rounded-full ml-2 ${typeStyles[pokemonInfo.types[1].type.name]?.bg || 'bg-gray-200'} ${typeStyles[pokemonInfo.types[1].type.name]?.text || 'text-black'}`}>
-                {typeStyles[pokemonInfo.types[1].type.name]?.symbol || ''} {pokemonInfo.types[1].type.name}
-              </p>
-            )}
+          <p className="text-lg text-white font-medium">{pokemonDesc}</p>
+          <div className="my-10 flex-row font-bold text-xl pl-6 mr-4 rounded-4xl shadow-[0_0_10px_rgba(245,245,245,0.5)] bg-white">
+              <section className="flex p-2 gap-4 items-center">
+                <h3 className="text-xl font-semibold">Type:</h3>
+                <p className={`inline-block mt-3 px-3 py-1 rounded-full ${typeStyles[pokemonInfo.types[0].type.name]?.bg || 'bg-gray-200'} ${typeStyles[pokemonInfo.types[0].type.name]?.text || 'text-black'}`}>
+                  {typeStyles[pokemonInfo.types[0].type.name]?.symbol || ''} {pokemonInfo.types[0].type.name}
+                </p>
+                {pokemonInfo.types[1] && (
+                  <p className={`inline-block mt-3 px-3 py-1 rounded-full ml-2 ${typeStyles[pokemonInfo.types[1].type.name]?.bg || 'bg-gray-200'} ${typeStyles[pokemonInfo.types[1].type.name]?.text || 'text-black'}`}>
+                    {typeStyles[pokemonInfo.types[1].type.name]?.symbol || ''} {pokemonInfo.types[1].type.name}
+                  </p>
+                )}
 
-            <h3 className="text-xl font-semibold mt-4">Weakness:</h3>
-            {pokemonWeakness1 && (
-              <p className={`inline-block mt-2 px-3 py-1 rounded-full ${typeStyles[pokemonWeakness1]?.bg || 'bg-gray-200'} ${typeStyles[pokemonWeakness1]?.text || 'text-black'}`}>
-                {typeStyles[pokemonWeakness1]?.symbol || ''} {pokemonWeakness1}
-              </p>
-            )}
-            {pokemonWeakness2 && (
-              <p className={`inline-block px-3 py-1 rounded-full ml-2 ${typeStyles[pokemonWeakness2]?.bg || 'bg-gray-200'} ${typeStyles[pokemonWeakness2]?.text || 'text-black'}`}>
-                {typeStyles[pokemonWeakness2]?.symbol || ''} {pokemonWeakness2}
-              </p>
-            )}
-          </section>
-
-          <section className="mt-6 text-xl">
-            <p>Height: {pokemonInfo.height / 10} m</p>
-            <p>Weight: {pokemonInfo.weight / 10} Kg</p>
-            <p>Ability: {pokemonInfo.abilities[0].ability.name}</p>
-            {pokemonInfo.abilities[1] && <p>Ability: {pokemonInfo.abilities[1].ability.name}</p>}
-          </section>
+                <h3 className="text-xl font-semibold">Weakness:</h3>
+                {pokemonWeakness1 && (
+                  <p className={`inline-block mt-3 px-3 py-1 rounded-full ${typeStyles[pokemonWeakness1]?.bg || 'bg-gray-200'} ${typeStyles[pokemonWeakness1]?.text || 'text-black'}`}>
+                    {typeStyles[pokemonWeakness1]?.symbol || ''} {pokemonWeakness1}
+                  </p>
+                )}
+                {pokemonWeakness2 && (
+                  <p className={`inline-block mt-3 px-3 py-1 rounded-full ml-2 ${typeStyles[pokemonWeakness2]?.bg || 'bg-gray-200'} ${typeStyles[pokemonWeakness2]?.text || 'text-black'}`}>
+                    {typeStyles[pokemonWeakness2]?.symbol || ''} {pokemonWeakness2}
+                  </p>
+                )}
+              </section>
+              <section className="my-5 pb-5">
+                <p>Height: {pokemonInfo.height / 10} m 📏</p>
+                <p>Weight: {pokemonInfo.weight / 10} Kg ⚖️</p>
+                <p>Ability: {pokemonInfo.abilities[0].ability.name} 💪</p>
+              {pokemonInfo.abilities[1] && <p>Ability: {pokemonInfo.abilities[1].ability.name} 💪</p>}
+              </section>
+          </div>
         </span>
-        <section className="mt-20 font-bold text-xl">
+        <section className="mt-10 font-bold p-10 text-xl pl-6 mr-4 rounded-4xl shadow-[0_0_10px_rgba(245,245,245,0.5)] bg-white">
           <p>
-            HP: <progress className="w-100" value={pokemonInfo.stats[0].base_stat} max="255"></progress> {pokemonInfo.stats[0].base_stat}
+            HP: <progress className="w-100" value={pokemonInfo.stats[0].base_stat} max="255"></progress> {pokemonInfo.stats[0].base_stat} ❤️
           </p>
           <p>
-            Attack: <progress className="w-100 mt-3" value={pokemonInfo.stats[1].base_stat} max="255"></progress> {pokemonInfo.stats[1].base_stat}
+            Attack: <progress className="w-100 mt-3" value={pokemonInfo.stats[1].base_stat} max="255"></progress> {pokemonInfo.stats[1].base_stat} ⚔️
           </p>
           <p>
-            Defense: <progress className="w-100 mt-3" value={pokemonInfo.stats[2].base_stat} max="255"></progress> {pokemonInfo.stats[2].base_stat}
+            Defense: <progress className="w-100 mt-3" value={pokemonInfo.stats[2].base_stat} max="255"></progress> {pokemonInfo.stats[2].base_stat} 🛡️
           </p>
           <p>
-            Special Attack: <progress className="w-100 mt-3" value={pokemonInfo.stats[3].base_stat} max="255"></progress> {pokemonInfo.stats[3].base_stat}
+            Special Attack: <progress className="w-100 mt-3" value={pokemonInfo.stats[3].base_stat} max="255"></progress> {pokemonInfo.stats[3].base_stat} ✨
           </p>
           <p>
-            Special Defense: <progress className="w-100 mt-3" value={pokemonInfo.stats[4].base_stat} max="255"></progress> {pokemonInfo.stats[4].base_stat}
+            Special Defense: <progress className="w-100 mt-3" value={pokemonInfo.stats[4].base_stat} max="255"></progress> {pokemonInfo.stats[4].base_stat} 🛡️
           </p>
           <p>
-            Speed: <progress className="w-100 mt-3" value={pokemonInfo.stats[5].base_stat} max="255"></progress> {pokemonInfo.stats[5].base_stat}
+            Speed: <progress className="w-100 mt-3" value={pokemonInfo.stats[5].base_stat} max="255"></progress> {pokemonInfo.stats[5].base_stat} ⚡
           </p>
         </section>
       </div>
