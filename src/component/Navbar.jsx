@@ -11,9 +11,9 @@ export default function Navbar({onSearch}) {
   return (
     <>
         
-      <div className="flex flex-col justify-center  items-center bg-white py-2">
+      <div className="flex flex-col justify-center pt-5 py-10  items-center bg-white py-2">
          <Link to="/"><img src={pokedex_logo} alt="Logo Pokémon" className="w-50 py-3"/></Link>
-        <form onSubmit={handleSubmit} className="flex md:w-3xl lg:w-6xl items-center border-2 rounded-md overflow-hidden">
+        <form onSubmit={handleSubmit} className="mt-5 flex md:w-3xl lg:w-5xl items-center border-2 rounded-md overflow-hidden">
           <input
               type="search"
               className="px-4 py-2 w-full focus:outline-none"
