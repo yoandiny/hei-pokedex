@@ -12,10 +12,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route element={<Navbar />}>
-          <Route path="/" element={<Homepage />} />
-          <Route path='/profile' element={<PokemonProfile />} />
-          </Route>
+            <Route path="/" element={<Homepage />} />
+            <Route path='/profile' element={<PokemonProfile />} />
         </Routes>
        </BrowserRouter>
       
