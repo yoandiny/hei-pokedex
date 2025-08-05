@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import {useNavigate} from "react-router-dom";
+import noFoundPokemon from "../assets/images/pokemonNoFound.png"
 
 export default function PokemonList({searchTerm = ""}) {
   const [pokemons, setPokemons] = useState([]);
@@ -87,7 +88,17 @@ export default function PokemonList({searchTerm = ""}) {
     <div className="flex justify-center">
       <div className="p-10 w-full bg-neutral-600">
         <div className="grid grid-cols-3 gap-6">
-          {filteredPokemons.map((pokemon, index) => {
+          {filteredPokemons.length === 0 ?
+              <div className="col-span-3 text-center">
+                <img
+                    src={noFoundPokemon}
+                    alt="No Pokémon found"
+                    className="mx-auto w-60 h-auto mt-8"
+                />
+                <p className="text-white text-xl mt-4">No Pokemon found.</p>
+              </div>
+          :
+            filteredPokemons.map((pokemon, index) => {
             const groupIndex = Math.floor(index / 3);
             const groupColors = [
               'bg-green-300',
@@ -141,7 +152,8 @@ export default function PokemonList({searchTerm = ""}) {
                 </div>
               </div>
             );
-          })}
+          })
+          }
         </div>
       </div>
     </div>
