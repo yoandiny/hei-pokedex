@@ -13,8 +13,8 @@ export default function Navbar() {
               className="px-4 py-2 w-full focus:outline-none"
               placeholder="Search name, type, number "
           />
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">
-            <i class="fa fa-search"></i>
+          <button className="w-20 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">
+            <i className="scale-130 fa fa-search"></i>
           </button>
         </div>
       </div>
