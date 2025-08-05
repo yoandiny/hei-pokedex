@@ -1,12 +1,22 @@
 import { useState, useEffect } from 'react';
 import {useNavigate} from "react-router-dom";
 
-export default function PokemonList() {
+export default function PokemonList({searchTerm = ""}) {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  const filteredPokemons = pokemons.filter((pokemon) =>{
+    const term = searchTerm.toLowerCase();
+    const nameMatch = pokemon.name.toLowerCase().includes(term);
+    const idMatch = pokemon.id.toString() === term
+    const typeMatch = pokemon.types.some(type =>
+        type.type.name.toLowerCase().includes(term)
+    );
+
+    return nameMatch || idMatch || typeMatch
+  })
 
   const handlePokemonClick = (pokemon) =>{
     localStorage.setItem("pokemonInfo", JSON.stringify(pokemon));
@@ -77,7 +87,7 @@ export default function PokemonList() {
     <div className="flex justify-center">
       <div className="p-10 w-full bg-neutral-600">
         <div className="grid grid-cols-3 gap-6">
-          {pokemons.map((pokemon, index) => {
+          {filteredPokemons.map((pokemon, index) => {
             const groupIndex = Math.floor(index / 3);
             const groupColors = [
               'bg-green-300',
