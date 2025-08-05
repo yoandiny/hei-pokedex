@@ -22,7 +22,7 @@ export default function PokemonList({searchTerm = ""}) {
   const handlePokemonClick = (pokemon) =>{
     localStorage.setItem("pokemonInfo", JSON.stringify(pokemon));
     navigate("/profile");
-    
+
   }
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export default function PokemonList({searchTerm = ""}) {
     water: { bg: 'bg-blue-300', text: 'text-white', symbol: '💧' },
     bug: { bg: 'bg-lime-300', text: 'text-white', symbol: '🐞' },
     normal: { bg: 'bg-gray-300', text: 'text-black', symbol: '⬜' },
-    electric: { bg: 'bg-yellow-400', text: 'text-black', symbol: '⚡' },
+    electric: { bg: 'bg-yellow-100', text: 'text-black', symbol: '⚡' },
     ground: { bg: 'bg-yellow-300', text: 'text-white', symbol: '🌍' },
     fairy: { bg: 'bg-pink-400', text: 'text-black', symbol: '✨' },
     fighting: { bg: 'bg-red-700', text: 'text-white', symbol: '🥊' },
@@ -86,8 +86,8 @@ export default function PokemonList({searchTerm = ""}) {
 
   return (
     <div className="flex justify-center">
-      <div className="p-10 w-full bg-neutral-600">
-        <div className="grid grid-cols-3 gap-6">
+      <div className="p-10 pt-25 w-full bg-gray-200">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-20 place-items-center">
           {filteredPokemons.length === 0 ?
               <div className="col-span-3 text-center">
                 <img
@@ -101,10 +101,10 @@ export default function PokemonList({searchTerm = ""}) {
             filteredPokemons.map((pokemon, index) => {
             const groupIndex = Math.floor(index / 3);
             const groupColors = [
-              'bg-green-300',
-              'bg-amber-200',
-              'bg-blue-200',
-              'bg-red-200',
+              'bg-green-400',
+              'bg-amber-500',
+              'bg-blue-400',
+              'bg-red-300',
             ];
             const groupBgColor = groupColors[groupIndex % groupColors.length];
 
@@ -117,38 +117,38 @@ export default function PokemonList({searchTerm = ""}) {
               <div
                 onClick={() => handlePokemonClick(pokemon)}
                 key={pokemon.id}
-                className={`rounded-2xl shadow-xl p-4 hover:shadow-2xl transition-shadow cursor-pointer ${groupBgColor} shine-effect`} // Ajout de shine-effect
+                className={`xl:w-9/12 md:9/12 rounded-2xl shadow-xl p-4 hover:shadow-2xl transition-shadow cursor-pointer ${groupBgColor} shine-effect`} // Ajout de shine-effect
               >
-                <div className="flex flex-row items-start justify-between gap-1">
-                  <section>
-                    <p className="text-[20px] font-bold">#{pokemon.id}</p>
-                    <h2 className="text-2xl font-semibold capitalize">{pokemon.name}</h2>
-                    <div className="flex gap-1 mt-6">
-                      {pokemon.types.map((type) => {
-                        const typeStyle = typeStyles[type.type.name] || {
-                          bg: 'bg-gray-200',
-                          text: 'text-black',
-                          symbol: '❓',
-                        };
-                        return (
-                          <div
-                            key={type.type.name}
-                            className={`px-3 py-1 rounded-[7px] flex items-center border border-dashed ${typeStyle.bg} ${typeStyle.text}`}
-                          >
-                            {typeStyle.symbol} {type.type.name}
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </section>
-                  <div>
+                <div className="h-50 flex flex-col-reverse items-center justify-between gap-1">
+                  <div className="flex justify-start">
+                    <section>
+                      <p className="text-[20px] text-white font-bold">#{pokemon.id}</p>
+                      <h2 className="text-2xl text-white font-semibold capitalize">{pokemon.name}</h2>
+                      <div className="flex gap-1 mt-6">
+                        {pokemon.types.map((type) => {
+                          const typeStyle = typeStyles[type.type.name] || {
+                            bg: 'bg-gray-200',
+                            text: 'text-black',
+                            symbol: '❓',
+                          };
+                          return (
+                            <div
+                              key={type.type.name}
+                              className={`px-3 py-1 rounded-[10px]  flex items-center  ${typeStyle.bg} ${typeStyle.text}`}
+                            >
+                              <span className="text-black font-bold">{typeStyle.symbol} {type.type.name}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </section>
+                  </div>
                     <img
                       src={spriteUrl}
                       alt={pokemon.name}
-                      className="w-32 h-32 object-contain"
+                      className="z-200 w-32 h-32 object-contain  -translate-y-5"
                       loading="lazy"
                     />
-                  </div>
                 </div>
               </div>
             );
