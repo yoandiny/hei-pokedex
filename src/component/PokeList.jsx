@@ -65,13 +65,13 @@ export default function PokemonList({searchTerm = ""}) {
 
   const typeStyles = {
     grass: { bg: 'bg-green-300', text: 'text-white', symbol: '🌱' },
-    poison: { bg: 'bg-purple-300', text: 'text-white', symbol: '☣️' },
-    fire: { bg: 'bg-red-300', text: 'text-white', symbol: '🔥' },
-    water: { bg: 'bg-blue-300', text: 'text-white', symbol: '💧' },
+    poison: { bg: 'bg-purple-400', text: 'text-white', symbol: '☣️' },
+    fire: { bg: 'bg-red-400', text: 'text-white', symbol: '🔥' },
+    water: { bg: 'bg-blue-200', text: 'text-white', symbol: '💧' },
     bug: { bg: 'bg-lime-300', text: 'text-white', symbol: '🐞' },
     normal: { bg: 'bg-gray-300', text: 'text-black', symbol: '⬜' },
     electric: { bg: 'bg-yellow-100', text: 'text-black', symbol: '⚡' },
-    ground: { bg: 'bg-yellow-300', text: 'text-white', symbol: '🌍' },
+    ground: { bg: 'bg-yellow-400', text: 'text-white', symbol: '🌍' },
     fairy: { bg: 'bg-pink-400', text: 'text-black', symbol: '✨' },
     fighting: { bg: 'bg-red-700', text: 'text-white', symbol: '🥊' },
     psychic: { bg: 'bg-pink-700', text: 'text-white', symbol: '🔮' },
@@ -81,7 +81,7 @@ export default function PokemonList({searchTerm = ""}) {
     dragon: { bg: 'bg-purple-800', text: 'text-white', symbol: '🐉' },
     dark: { bg: 'bg-gray-800', text: 'text-white', symbol: '🌑' },
     steel: { bg: 'bg-gray-400', text: 'text-black', symbol: '⚙️' },
-    flying: { bg: 'bg-indigo-300', text: 'text-black', symbol: '羽' },
+    flying: { bg: 'bg-indigo-100', text: 'text-black', symbol: '羽' },
   };
 
   return (
