@@ -87,7 +87,7 @@ export default function PokemonList({searchTerm = ""}) {
   return (
     <div className="flex justify-center">
       <div className="p-10 pt-25 w-full bg-gray-200">
-        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-y-20 place-items-center">
+        <div className="grid grid-cols-3  gap-y-20 place-items-center">
           {filteredPokemons.length === 0 ?
               <div className="col-span-3 text-center">
                 <img
@@ -95,7 +95,7 @@ export default function PokemonList({searchTerm = ""}) {
                     alt="No Pokémon found"
                     className="mx-auto w-60 h-auto mt-8"
                 />
-                <p className="text-white text-xl mt-4">No Pokemon found.</p>
+                <p className="text-black font-bold text-xl mt-4">No Pokemon found.</p>
               </div>
           :
             filteredPokemons.map((pokemon, index) => {
